@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Domain\Poll\Contracts\ShortCodeGeneratorInterface;
+use App\Domain\Poll\Factories\PollFactory;
 use App\Domain\Poll\Generators\RandomShortCodeGenerator;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
             ShortCodeGeneratorInterface::class,
             RandomShortCodeGenerator::class,
         );
+
+        // PollFactory is resolved via the container so its ShortCodeGeneratorInterface
+        // dependency is automatically injected — no manual wiring needed.
+        $this->app->bind(PollFactory::class);
     }
 
     /**
