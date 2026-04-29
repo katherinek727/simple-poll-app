@@ -1,8 +1,8 @@
 import { createStore } from 'vuex'
+import poll from './modules/poll'
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  getters: {},
+  modules: {
+    poll,
+  },
 })
